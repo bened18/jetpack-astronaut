@@ -21,8 +21,7 @@ public class Player : MonoBehaviour
                 SceneManager.LoadScene("Game");
             }
             return;
-        }
-        if (Input.GetMouseButton(0)) 
+        }else if (Input.GetMouseButton(0)) 
         {
             rb.AddForce(new Vector3(0, 50, 0), ForceMode.Acceleration);
         }
@@ -33,7 +32,10 @@ public class Player : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        gameOver = true;
-        rb.isKinematic = true;
+        if (!other.CompareTag("Coins"))
+        {
+            gameOver = true;
+            rb.isKinematic = true;
+        }
     }
 }
