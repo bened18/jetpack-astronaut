@@ -288,8 +288,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af106b58fa553404b974ea2ed236de96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 860882813}
+  player: {fileID: 860882812}
   distanceText: {fileID: 1793268301}
+  player1: {fileID: 860882814}
 --- !u!114 &312971811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1069,6 +1070,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOver: 0
+  playerCanMove: 1
   playAgainButton: {fileID: 324646317}
   resultText: {fileID: 1014796139}
   coinCounter: {fileID: 860882819}

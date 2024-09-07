@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
 
     Rigidbody rb;
     public bool gameOver = false;
+    public bool playerCanMove = true;
 
     public GameObject playAgainButton;
     public TextMeshProUGUI resultText; 
@@ -25,7 +26,7 @@ public class Player : MonoBehaviour
     }
 
     private void FixedUpdate() {
-        if (Input.GetMouseButton(0)) 
+        if (playerCanMove && Input.GetMouseButton(0)) 
         {
             rb.AddForce(new Vector3(0, 50, 0), ForceMode.Acceleration);
         }
@@ -39,7 +40,8 @@ public class Player : MonoBehaviour
         if (!other.CompareTag("Coins"))
         {
             gameOver = true;
-            rb.isKinematic = true;
+            playerCanMove = false;
+            rb.AddForce(new Vector3(500, 0, 0), ForceMode.Acceleration);
             playAgainButton.SetActive(true);
             resultText.gameObject.SetActive(true);
 
