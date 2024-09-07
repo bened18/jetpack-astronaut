@@ -21,4 +21,9 @@ public class Camera : MonoBehaviour
             transform.position += new Vector3(speed * Time.deltaTime, 0, 0);
         } 
     }
+
+    public void IncreaseSpeed(float percentage)
+    {
+        speed += speed * (percentage / 100f); // Incremento en porcentaje
+    }
 }
