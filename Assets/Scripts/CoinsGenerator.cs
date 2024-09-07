@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CoinsGenerator : MonoBehaviour
 {
-     public GameObject player;
+    public GameObject player;
     public GameObject coinGroup1;
     public GameObject coinGroup2;
     public GameObject coinGroup3;
@@ -45,6 +45,18 @@ public class CoinsGenerator : MonoBehaviour
     // Función para establecer la posición y espaciado del grupo de monedas
     void SetTransform(GameObject coinGroup, float referenceX)
     {
+        // Reactivar el grupo padre si está desactivado
+        if (!coinGroup.activeSelf)
+        {
+            coinGroup.SetActive(true);
+        }
+
+        // Reactivar todas las monedas hijas
+        foreach (Transform coin in coinGroup.transform)
+        {
+            coin.gameObject.SetActive(true);
+        }
+
         coinGroup.transform.position = new Vector3(referenceX + Random.Range(minCoinSpacing, maxCoinSpacing), Random.Range(minCoinY, maxCoinY), 0);
     }
 
