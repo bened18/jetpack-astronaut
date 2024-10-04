@@ -10,6 +10,9 @@ public class CoinCounter : MonoBehaviour
     // Referencia al grupo padre (el grupo de monedas)
     private Transform coinGroupParent;
 
+    public AudioSource coinSound; // Referencia al componente AudioSource
+
+
     private void Start()
     {
         // Inicializar el texto del contador de monedas
@@ -23,6 +26,12 @@ public class CoinCounter : MonoBehaviour
         {
             coinCount++; // Aumentar el contador de monedas
             UpdateCoinCounterUI(); // Actualizar la UI
+
+             // Reproducir el sonido de la moneda
+            if (coinSound != null)
+            {
+                coinSound.Play();
+            }
 
             // Desactivar la moneda
             other.gameObject.SetActive(false);

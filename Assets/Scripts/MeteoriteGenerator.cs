@@ -19,6 +19,11 @@ public class MeteoriteGenerator : MonoBehaviour
     public float minTimeBetweenMeteorites = 15f; // Tiempo mínimo entre meteoritos
     public float maxTimeBetweenMeteorites = 30f; // Tiempo máximo entre meteoritos
 
+    // Sonidos
+    public AudioSource audioSource;  // Referencia al componente de AudioSource
+    public AudioClip alertBeepSound; // Sonido de alerta (beep)
+    public AudioClip meteoriteLaunchSound; // Sonido de disparo del meteorito
+
     void Start()
     {
         // Iniciar la corrutina para generar meteoritos en intervalos aleatorios
@@ -45,6 +50,12 @@ public class MeteoriteGenerator : MonoBehaviour
         // Generar la alerta en la posición determinada
         GameObject alert = Instantiate(alertPrefab, alertPosition, Quaternion.identity);
 
+         // Reproducir sonido de alerta (beep)
+        if (audioSource != null && alertBeepSound != null)
+        {
+            audioSource.PlayOneShot(alertBeepSound);
+        }
+
         // Mover la alerta junto con el jugador mientras se espera antes del lanzamiento
         float elapsedTime = 0f;
         while (elapsedTime < timeBeforeLaunch)
@@ -64,6 +75,12 @@ public class MeteoriteGenerator : MonoBehaviour
 
         // Generar el meteorito en la posición final de la alerta
         GameObject meteorite = Instantiate(meteoritePrefab, finalAlertPosition, Quaternion.identity);
+
+         // Reproducir sonido de disparo del meteorito
+        if (audioSource != null && meteoriteLaunchSound != null)
+        {
+            audioSource.PlayOneShot(meteoriteLaunchSound);
+        }
 
         // Lanzar el meteorito hacia la posición actual del jugador
         Vector3 targetPosition = player.transform.position;
