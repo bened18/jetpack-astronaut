@@ -816,6 +816,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 670760409}
   m_CullTransparentMesh: 1
+--- !u!1 &671982886
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 671982888}
+  - component: {fileID: 671982887}
+  m_Layer: 0
+  m_Name: PowerUpGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &671982887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 671982886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b9908cf63b9b9d4893dc373647b763a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 860882812}
+  powerUpPrefab: {fileID: 1975417237341344818, guid: 1d732368484cbe746aa8651591375a7f, type: 3}
+  minTimeBetweenPowerUps: 5
+  maxTimeBetweenPowerUps: 10
+  powerUpDuration: 10
+  powerUpSpawnDistanceX: 20
+  minYPosition: 2
+  maxYPosition: 8
+--- !u!4 &671982888
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 671982886}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.991652, y: 3.5912917, z: 0.2003959}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1126,6 +1178,8 @@ MonoBehaviour:
   resultText: {fileID: 1014796139}
   coinCounter: {fileID: 860882819}
   distanceCounter: {fileID: 312971810}
+  powerUpGenerator: {fileID: 671982887}
+  invincibleColor: {r: 0, g: 1, b: 0, a: 1}
 --- !u!54 &860882815
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1194,7 +1248,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a2aace650888c8a47b9314107e7a4767, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2098,3 +2152,4 @@ SceneRoots:
   - {fileID: 1113503801}
   - {fileID: 1244687047}
   - {fileID: 116007758}
+  - {fileID: 671982888}
