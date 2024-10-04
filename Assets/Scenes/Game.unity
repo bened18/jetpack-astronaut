@@ -256,6 +256,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 41925107}
   m_CullTransparentMesh: 1
+--- !u!1 &116007756
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 116007758}
+  - component: {fileID: 116007757}
+  m_Layer: 0
+  m_Name: AlienGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &116007757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116007756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83ba434855122d64884706b63fb1a12a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 860882812}
+  alienPrefab: {fileID: 239210716053830373, guid: 393a82c8c1aa72143bd84f67a90c5ee7, type: 3}
+  alienSpeed: 3
+  minTimeBetweenAliens: 10
+  maxTimeBetweenAliens: 20
+  groundYPosition: 1.48
+  alienSpawnDistanceX: 25
+--- !u!4 &116007758
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116007756}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.695914, y: 3.4323463, z: 733.5322}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &312971809
 GameObject:
   m_ObjectHideFlags: 0
@@ -1685,6 +1736,60 @@ Transform:
   m_Children: []
   m_Father: {fileID: 639269511}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1244687045
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1244687047}
+  - component: {fileID: 1244687046}
+  m_Layer: 0
+  m_Name: MeteoriteGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1244687046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244687045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f05469c135b6ec41ad041c101d83e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 860882812}
+  meteoritePrefab: {fileID: 7236880908963465915, guid: 26a9485f7f180cd40a4db833ad5e932a, type: 3}
+  alertPrefab: {fileID: 2804459046538152436, guid: 5df38af052cbf9b448bcd48a52a9b776, type: 3}
+  meteoriteSpeed: 10
+  timeBeforeLaunch: 2
+  minYPosition: 2
+  maxYPosition: 8
+  alertDistanceX: 20
+  minTimeBetweenMeteorites: 15
+  maxTimeBetweenMeteorites: 30
+--- !u!4 &1244687047
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244687045}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -19.034931, y: 6.2356577, z: -8.461089}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1412256955
 GameObject:
   m_ObjectHideFlags: 0
@@ -1991,3 +2096,5 @@ SceneRoots:
   - {fileID: 365272233}
   - {fileID: 1463995706}
   - {fileID: 1113503801}
+  - {fileID: 1244687047}
+  - {fileID: 116007758}
