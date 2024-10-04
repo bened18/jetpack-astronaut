@@ -7,6 +7,8 @@ public class Camera : MonoBehaviour
 
     public Player player;
     public float speed = 5f;
+    internal static object main;
+
     // Start is called before the first frame update
     void Start()
     {
