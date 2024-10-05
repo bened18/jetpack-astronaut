@@ -14,10 +14,12 @@ public class Player : MonoBehaviour
 
     public GameObject playAgainButton;
     public TextMeshProUGUI resultText; 
+    public TextMeshProUGUI highScoreText; // Texto para mostrar el récord
 
     // Referencias a los scripts de contadores
     public CoinCounter coinCounter; // Referencia al contador de monedas
     public DistanceCounter distanceCounter; // Referencia al contador de distancia
+    public RecordManager recordManager; // Referencia al script RecordManager
 
     // Referencia al script del PowerUpGenerator o similar que maneja la invencibilidad
     public PowerUpGenerator powerUpGenerator;
@@ -38,6 +40,8 @@ public class Player : MonoBehaviour
         // Obtener el material del jugador y su color original
         playerMaterial = GetComponent<Renderer>().material;
         originalColor = playerMaterial.color;
+        // Mostrar el récord guardado
+        DisplayHighScore();
     }
 
     private void FixedUpdate() {
@@ -87,10 +91,14 @@ public class Player : MonoBehaviour
 
              // Obtener la distancia recorrida desde el script DistanceCounter
             float distanceTravelled = distanceCounter.GetDistanceTravelled();
+            int coinsCollected = coinCounter.coinCount;
             // Mostrar los resultados de monedas y distancia
              // Activar el texto
-            resultText.text = "Recorriste: " + Mathf.Floor(distanceTravelled).ToString() + " metros\n" +
-                              "Recogiste: " + coinCounter.coinCount + " monedas";
+            resultText.text = "you traveled: " + Mathf.Floor(distanceTravelled).ToString() + " meters\n" +
+                              "you picked up: " + coinCounter.coinCount + " coins";
+
+            // Guardar el récord a través del RecordManager (sumar las monedas y actualizar la distancia si es necesario)
+            recordManager.SaveHighScore(distanceTravelled, coinsCollected);
         }
     }
 
@@ -103,5 +111,10 @@ public class Player : MonoBehaviour
     public void OnPlayAgainButtonPressed()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Reinicia la escena
+    }
+
+    private void DisplayHighScore()
+    {
+        highScoreText.text = recordManager.GetHighScoreText(); // Obtener el récord desde el RecordManager
     }
 }
