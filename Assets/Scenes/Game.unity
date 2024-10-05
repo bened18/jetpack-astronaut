@@ -422,7 +422,7 @@ MonoBehaviour:
   player: {fileID: 860882812}
   alienPrefab: {fileID: 239210716053830373, guid: 393a82c8c1aa72143bd84f67a90c5ee7, type: 3}
   alienSpeed: 3
-  minTimeBetweenAliens: 15
+  minTimeBetweenAliens: 10
   maxTimeBetweenAliens: 30
   groundYPosition: 1.48
   alienSpawnDistanceX: 25
@@ -1254,8 +1254,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 860882812}
   powerUpPrefab: {fileID: 1975417237341344818, guid: 1d732368484cbe746aa8651591375a7f, type: 3}
-  minTimeBetweenPowerUps: 60
-  maxTimeBetweenPowerUps: 80
+  minTimeBetweenPowerUps: 30
+  maxTimeBetweenPowerUps: 60
   powerUpDuration: 10
   powerUpSpawnDistanceX: 20
   minYPosition: 2
@@ -2447,8 +2447,8 @@ MonoBehaviour:
   minYPosition: 2
   maxYPosition: 8
   alertDistanceX: 19
-  minTimeBetweenMeteorites: 10
-  maxTimeBetweenMeteorites: 20
+  minTimeBetweenMeteorites: 15
+  maxTimeBetweenMeteorites: 30
   audioSource: {fileID: 1244687048}
   alertBeepSound: {fileID: 8300000, guid: 3bc53ddd251a312478d67b88d886e874, type: 3}
   meteoriteLaunchSound: {fileID: 8300000, guid: 67d3362fe1711ed48a6c84ede9a3a9f8, type: 3}
