@@ -1254,10 +1254,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 860882812}
   powerUpPrefab: {fileID: 1975417237341344818, guid: 1d732368484cbe746aa8651591375a7f, type: 3}
-  minTimeBetweenPowerUps: 30
-  maxTimeBetweenPowerUps: 60
+  minTimeBetweenPowerUps: 20
+  maxTimeBetweenPowerUps: 30
   powerUpDuration: 10
-  powerUpSpawnDistanceX: 20
+  powerUpSpawnDistanceX: 40
   minYPosition: 2
   maxYPosition: 8
 --- !u!4 &671982888
@@ -1369,62 +1369,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &725113747
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 725113748}
-  - component: {fileID: 725113749}
-  m_Layer: 0
-  m_Name: Obstacles
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &725113748
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 725113747}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.28, y: 2.39, z: 0.06943427}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &725113749
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 725113747}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25565b75b1dbe2f41ae8469b73ba1dc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 860882812}
-  laser1: {fileID: 0}
-  laser2: {fileID: 0}
-  laser3: {fileID: 0}
-  laser4: {fileID: 0}
-  laserPrefab: {fileID: 7737833982807536325, guid: 008e564c53313434a92fcaa0e304ef7a, type: 3}
-  minObstacleY: 2
-  maxObstacleY: 8
-  minObstacleSpacing: 10
-  maxObstacleSpacing: 20
-  minObstacleScaleY: 2
-  maxObstacleScaleY: 5
 --- !u!1 &793153006
 GameObject:
   m_ObjectHideFlags: 0
@@ -2934,61 +2878,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1412543804}
   m_CullTransparentMesh: 1
---- !u!1 &1463995704
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1463995706}
-  - component: {fileID: 1463995705}
-  m_Layer: 0
-  m_Name: CoinsGenerator
-  m_TagString: Coins
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1463995705
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1463995704}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7145f48ccab427a4aa139c04c2eb982a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 860882812}
-  coinGroup1: {fileID: 0}
-  coinGroup2: {fileID: 0}
-  coinGroup3: {fileID: 0}
-  coinGroup4: {fileID: 0}
-  lineCoinsPrefab: {fileID: 1443531064932190247, guid: ef4840b68066da54494b9d3306856446, type: 3}
-  stairsCoinsPrefab: {fileID: 1443531064932190247, guid: c5b5d6a7564cd4645a8b64790cf2e8fd, type: 3}
-  minCoinY: 1
-  maxCoinY: 9
-  minCoinSpacing: 20
-  maxCoinSpacing: 40
---- !u!4 &1463995706
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1463995704}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.30331, y: 3.961363, z: -8.32134}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1518375632
 GameObject:
   m_ObjectHideFlags: 0
@@ -3389,6 +3278,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1544468476}
   m_CullTransparentMesh: 1
+--- !u!1 &1695847110
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1695847112}
+  - component: {fileID: 1695847111}
+  m_Layer: 0
+  m_Name: ObstaclesAndCoinsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1695847111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1695847110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53610bd8133988f4a86d4053d1246920, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 860882812}
+  laserPrefab: {fileID: 7737833982807536325, guid: 008e564c53313434a92fcaa0e304ef7a, type: 3}
+  lineCoinsPrefab: {fileID: 1443531064932190247, guid: ef4840b68066da54494b9d3306856446, type: 3}
+  stairsCoinsPrefab: {fileID: 1443531064932190247, guid: c5b5d6a7564cd4645a8b64790cf2e8fd, type: 3}
+  minYPosition: 2
+  maxYPosition: 8
+  minSpacingBetweenGenerations: 10
+  maxSpacingBetweenGenerations: 20
+  obstacleProbability: 80
+  coinProbability: 35
+--- !u!4 &1695847112
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1695847110}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.9755507, y: 4.95, z: -8.375}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1772984541
 GameObject:
   m_ObjectHideFlags: 0
@@ -3918,13 +3861,12 @@ SceneRoots:
   - {fileID: 963194228}
   - {fileID: 705507995}
   - {fileID: 639269511}
-  - {fileID: 725113748}
   - {fileID: 312971814}
   - {fileID: 365272233}
-  - {fileID: 1463995706}
   - {fileID: 1113503801}
   - {fileID: 1244687047}
   - {fileID: 116007758}
   - {fileID: 671982888}
   - {fileID: 441969037}
   - {fileID: 1886900222}
+  - {fileID: 1695847112}
