@@ -3355,8 +3355,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 860882812}
   laserPrefab: {fileID: 7737833982807536325, guid: 008e564c53313434a92fcaa0e304ef7a, type: 3}
-  lineCoinsPrefab: {fileID: 1443531064932190247, guid: ef4840b68066da54494b9d3306856446, type: 3}
-  stairsCoinsPrefab: {fileID: 1443531064932190247, guid: c5b5d6a7564cd4645a8b64790cf2e8fd, type: 3}
+  lineCoinsPrefab: {fileID: 5833394981235891150, guid: d6c8bda3a2eb45748be6ab2490278523, type: 3}
+  stairsCoinsPrefab: {fileID: 1876878439061445048, guid: 50dde4423a6215a4da446efc3d8111f0, type: 3}
   minYPosition: 2
   maxYPosition: 8
   minSpacingBetweenGenerations: 10
