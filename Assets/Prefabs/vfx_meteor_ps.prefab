@@ -4922,7 +4922,7 @@ GameObject:
   - component: {fileID: 4459243799161287699}
   m_Layer: 0
   m_Name: TrailAB
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5158,7 +5158,7 @@ GameObject:
   - component: {fileID: 3940933741891096719}
   m_Layer: 0
   m_Name: TrailAdd
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5295,7 +5295,7 @@ GameObject:
   - component: {fileID: 4580784123245711067}
   m_Layer: 0
   m_Name: Flare
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

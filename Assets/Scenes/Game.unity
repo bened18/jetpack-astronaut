@@ -1299,7 +1299,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 860882812}
-  powerUpPrefab: {fileID: 1975417237341344818, guid: 1d732368484cbe746aa8651591375a7f, type: 3}
+  powerUpPrefab: {fileID: 8782906398795114944, guid: aaebf599734daad4bac1da4d724f9653, type: 3}
+  shieldPrefab: {fileID: 8782906398795114944, guid: aaebf599734daad4bac1da4d724f9653, type: 3}
   minTimeBetweenPowerUps: 20
   maxTimeBetweenPowerUps: 30
   powerUpDuration: 10
