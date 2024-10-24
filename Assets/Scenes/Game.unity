@@ -466,11 +466,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 860882812}
-  alienPrefab: {fileID: 239210716053830373, guid: 393a82c8c1aa72143bd84f67a90c5ee7, type: 3}
-  alienSpeed: 3
+  alienPrefab: {fileID: 9160102767301841921, guid: b2ce38997b24c5f418bc05550214a760, type: 3}
   minTimeBetweenAliens: 10
   maxTimeBetweenAliens: 30
-  groundYPosition: 1.48
+  groundYPosition: 0.5
   alienSpawnDistanceX: 25
 --- !u!4 &116007758
 Transform:
