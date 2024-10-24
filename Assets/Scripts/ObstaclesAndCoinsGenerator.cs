@@ -56,9 +56,17 @@ public class ObstaclesAndCoinsGenerator : MonoBehaviour
     void GenerateLaser(float referenceX)
     {
         float posY = Random.Range(minYPosition, maxYPosition);
-        GameObject laser = Instantiate(laserPrefab, new Vector3(referenceX, posY, 0), Quaternion.identity);
+        
+        // Generar una rotación aleatoria en el eje Z
+        float randomZRotation = Random.Range(0f, 360f);
+        Quaternion rotation = Quaternion.Euler(0, 0, randomZRotation);
+        
+        // Instanciar el láser con la rotación aleatoria
+        GameObject laser = Instantiate(laserPrefab, new Vector3(referenceX, posY, 0), rotation);
+        
         // Aquí puedes añadir más lógica de configuración del láser si lo deseas
     }
+
 
     void GenerateCoinGroup(float referenceX)
     {
