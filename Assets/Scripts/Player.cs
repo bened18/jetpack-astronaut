@@ -34,8 +34,11 @@ public class Player : MonoBehaviour
 
     public ParticleSystem jetpackParticles; // Sistema de partículas del jetpack
 
+    private Animator animator; // Referencia al Animator
+
     private void Awake() {
         rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>(); // Obtener el Animator del jugador
         playAgainButton.SetActive(false);
         resultText.gameObject.SetActive(false);
         // Obtener el material del jugador y su color original
@@ -70,18 +73,34 @@ public class Player : MonoBehaviour
                 rb.velocity *= 0.50f;
             }
         }
+    }
 
-        // Verificar si el jugador es invencible y ajustar el color
-        if (powerUpGenerator.IsPlayerInvincible())
+    private void OnCollisionEnter(Collision collision) {
+        if (collision.gameObject.CompareTag("Floor"))
         {
-            SetPlayerColor(invincibleColor); // Cambiar al color invencible
-            Debug.Log("Color de Jugador verde");
+            // Si el jugador toca el suelo, IsFlying es false
+            animator.SetBool("IsFlying", false);
         }
-        else
+        if (collision.gameObject.CompareTag("PrevFloor"))
         {
-            SetPlayerColor(originalColor); // Restaurar el color original
+            // Si el jugador toca el suelo, IsFlying es false
+            animator.SetBool("IsFlying", false);
         }
     }
+
+    private void OnCollisionExit(Collision collision) {
+        if (collision.gameObject.CompareTag("Floor"))
+        {
+            // Si el jugador deja de tocar el suelo, IsFlying es true
+            animator.SetBool("IsFlying", true);
+        }
+        if (collision.gameObject.CompareTag("PrevFloor"))
+        {
+            // Si el jugador deja de tocar el suelo, IsFlying es true
+            animator.SetBool("IsFlying", true);
+        }
+    }
+
 
     private void OnTriggerEnter(Collider other) {
         // Si el jugador es invencible, ignorar la colisión
@@ -95,7 +114,6 @@ public class Player : MonoBehaviour
         {
             gameOver = true;
             playerCanMove = false;
-            rb.AddForce(new Vector3(500, 0, 0), ForceMode.Acceleration);
             playAgainButton.SetActive(true);
             resultText.gameObject.SetActive(true);
 
@@ -113,17 +131,25 @@ public class Player : MonoBehaviour
 
             // Guardar el récord a través del RecordManager (sumar las monedas y actualizar la distancia si es necesario)
             recordManager.SaveHighScore(distanceTravelled, coinsCollected);
+
+            // Activar la animación de muerte
+            animator.SetBool("IsDeath", true);
+
+            // Congelar el tiempo después de 3 segundos
+            StartCoroutine(FreezeGameAfterDelay(3f));
         }
     }
 
-    // Método para ajustar el color del jugador
-    private void SetPlayerColor(Color color)
+     IEnumerator FreezeGameAfterDelay(float delay)
     {
-        playerMaterial.color = color; // Cambiar el color del material
+        // Esperar el tiempo especificado antes de congelar el juego
+        yield return new WaitForSeconds(delay);
+        Time.timeScale = 0f; // Congelar el tiempo
     }
 
     public void OnPlayAgainButtonPressed()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Reinicia la escena
     }
 

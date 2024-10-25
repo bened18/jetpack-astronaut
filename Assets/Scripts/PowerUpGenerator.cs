@@ -66,7 +66,7 @@ public class PowerUpGenerator : MonoBehaviour
         Debug.Log("Jugador invencible");
 
         // Crear el escudo y posicionarlo alrededor del jugador
-        activeShield = Instantiate(shieldPrefab, player.transform.position, Quaternion.identity);
+        activeShield = Instantiate(shieldPrefab, player.transform.position + new Vector3(0, 1f, 0), Quaternion.identity);
         activeShield.transform.SetParent(player.transform); // Hacer que el escudo siga al jugador
 
         // Obtener el material del escudo
