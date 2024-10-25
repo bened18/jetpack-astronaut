@@ -7,13 +7,12 @@ using UnityEngine.UI; // Necesario para usar botones
 
 public class Player : MonoBehaviour
 {
-
     Rigidbody rb;
     public bool gameOver = false;
     public bool playerCanMove = true;
 
     public GameObject playAgainButton;
-    public TextMeshProUGUI resultText; 
+    public TextMeshProUGUI resultText;
     public TextMeshProUGUI highScoreText; // Texto para mostrar el récord
 
     // Referencias a los scripts de contadores
@@ -33,6 +32,8 @@ public class Player : MonoBehaviour
     public AudioSource audioSource;  // Referencia al componente de AudioSource
     public AudioClip deathScream; // Sonido de alerta (beep)
 
+    public ParticleSystem jetpackParticles; // Sistema de partículas del jetpack
+
     private void Awake() {
         rb = GetComponent<Rigidbody>();
         playAgainButton.SetActive(false);
@@ -42,16 +43,32 @@ public class Player : MonoBehaviour
         originalColor = playerMaterial.color;
         // Mostrar el récord guardado
         DisplayHighScore();
+        // Desactivar las partículas del jetpack al inicio
+        jetpackParticles.Stop();
     }
 
     private void FixedUpdate() {
         if (playerCanMove && Input.GetMouseButton(0)) 
         {
             rb.AddForce(new Vector3(0, 50, 0), ForceMode.Acceleration);
+            // Activar las partículas del jetpack
+            if (!jetpackParticles.isPlaying)
+            {
+                jetpackParticles.Play();
+            }
         }
-        else if (Input.GetMouseButtonUp(0))
+        else
         {
-            rb.velocity *= 0.50f;
+            // Detener las partículas del jetpack si no se está presionando el clic
+            if (jetpackParticles.isPlaying)
+            {
+                jetpackParticles.Stop();
+            }
+
+            if (Input.GetMouseButtonUp(0))
+            {
+                rb.velocity *= 0.50f;
+            }
         }
 
         // Verificar si el jugador es invencible y ajustar el color
@@ -59,7 +76,6 @@ public class Player : MonoBehaviour
         {
             SetPlayerColor(invincibleColor); // Cambiar al color invencible
             Debug.Log("Color de Jugador verde");
-
         }
         else
         {
@@ -68,8 +84,7 @@ public class Player : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-
-         // Si el jugador es invencible, ignorar la colisión
+        // Si el jugador es invencible, ignorar la colisión
         if (powerUpGenerator.IsPlayerInvincible())
         {
             // El jugador es invencible, no hacer nada.
@@ -89,11 +104,10 @@ public class Player : MonoBehaviour
                 audioSource.PlayOneShot(deathScream);
             }
 
-             // Obtener la distancia recorrida desde el script DistanceCounter
+            // Obtener la distancia recorrida desde el script DistanceCounter
             float distanceTravelled = distanceCounter.GetDistanceTravelled();
             int coinsCollected = coinCounter.coinCount;
             // Mostrar los resultados de monedas y distancia
-             // Activar el texto
             resultText.text = "you traveled: " + Mathf.Floor(distanceTravelled).ToString() + " meters\n" +
                               "you picked up: " + coinCounter.coinCount + " coins";
 
