@@ -8,19 +8,18 @@ public class PowerUpGenerator : MonoBehaviour
     public GameObject powerUpPrefab;
     public GameObject shieldPrefab; // Prefab del escudo
 
-    public float minTimeBetweenPowerUps = 60f; // Tiempo mínimo entre Power-Ups
-    public float maxTimeBetweenPowerUps = 120f; // Tiempo máximo entre Power-Ups
-    public float powerUpDuration = 10f; // Duración del efecto del Power-Up
-    public float powerUpSpawnDistanceX = 20f; // Distancia en X del jugador donde aparecerá el Power-Up
+    public float minTimeBetweenPowerUps = 60f;
+    public float maxTimeBetweenPowerUps = 120f;
+    public float powerUpDuration = 10f;
+    public float powerUpSpawnDistanceX = 20f;
     public float minYPosition;
     public float maxYPosition;
 
     private bool isPlayerInvincible = false;
-    private GameObject activeShield; // Referencia al escudo activo
+    private GameObject activeShield;
 
     void Start()
     {
-        // Iniciar la corrutina para generar Power-Ups en intervalos aleatorios
         StartCoroutine(PowerUpGenerationLoop());
     }
 
@@ -28,38 +27,30 @@ public class PowerUpGenerator : MonoBehaviour
     {
         while (true)
         {
-            // Esperar un tiempo aleatorio entre 60 y 120 segundos antes de generar el siguiente Power-Up
             yield return new WaitForSeconds(Random.Range(minTimeBetweenPowerUps, maxTimeBetweenPowerUps));
-
-            // Generar el Power-Up
-            StartCoroutine(GeneratePowerUp());
+            GeneratePowerUp();
         }
     }
 
-    IEnumerator GeneratePowerUp()
+    void GeneratePowerUp()
     {
-        // Determinar la posición en la pantalla
         float spawnY = Random.Range(minYPosition, maxYPosition);
         Vector3 powerUpPosition = new Vector3(player.transform.position.x + powerUpSpawnDistanceX, spawnY, 0);
+        Instantiate(powerUpPrefab, powerUpPosition, Quaternion.identity);
+    }
 
-        // Generar el Power-Up en la posición determinada
-        GameObject powerUp = Instantiate(powerUpPrefab, powerUpPosition, Quaternion.identity);
-
-        // Esperar a que el jugador colisione con el Power-Up
-        while (powerUp != null && Vector3.Distance(player.transform.position, powerUp.transform.position) > 0.5f)
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Colisión detectada con: " + other.gameObject.name); // Para ver qué está colisionando
+        if (other.gameObject.CompareTag("PowerUp"))
         {
-            yield return null;
-        }
-
-        // El jugador ha recogido el Power-Up
-        if (powerUp != null)
-        {
-            Destroy(powerUp);
+            Debug.Log("PowerUp detectado"); // Confirma si el PowerUp está siendo detectado
+            Destroy(other.gameObject);
             StartCoroutine(ActivateInvincibility());
         }
     }
 
-    IEnumerator ActivateInvincibility()
+    public IEnumerator ActivateInvincibility()
     {
         // Activar la invencibilidad
         isPlayerInvincible = true;
@@ -78,30 +69,24 @@ public class PowerUpGenerator : MonoBehaviour
         // Parpadeo del escudo
         for (int i = 0; i < 3; i++)
         {
-            // Reducir el alpha
-            shieldMaterial.SetFloat("_InnerAlpha", -0.5f);
+            shieldMaterial.SetFloat("_InnerAlpha", -0.5f); // Reducir el alpha
             yield return new WaitForSeconds(0.5f);
-
-            // Restaurar el alpha
-            shieldMaterial.SetFloat("_InnerAlpha", 0.1f);
+            shieldMaterial.SetFloat("_InnerAlpha", 0.1f); // Restaurar el alpha
             yield return new WaitForSeconds(0.5f);
         }
 
-        // Esperar el tiempo restante
         yield return new WaitForSeconds(1f);
 
-        // Desactivar la invencibilidad
+        // Desactivar la invencibilidad y el escudo
         isPlayerInvincible = false;
         Debug.Log("Jugador ya no es invencible");
-
-        // Destruir el escudo
         if (activeShield != null)
         {
             Destroy(activeShield);
         }
     }
 
-    // Método para verificar si el jugador es invencible
+
     public bool IsPlayerInvincible()
     {
         return isPlayerInvincible;

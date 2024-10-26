@@ -94,7 +94,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Floor") || collision.gameObject.CompareTag("PrevFloor"))
         {
             animator.SetBool("IsFlying", false);
-            if (!stepsAudioSource.isPlaying)
+            if (playerCanMove && !stepsAudioSource.isPlaying)
             {
                 stepsAudioSource.Play(); // Iniciar el sonido de los pasos al tocar el suelo
             }
@@ -110,11 +110,21 @@ public class Player : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
+        Debug.Log("Colisión detectada con: " + other.gameObject.name);
+        // Si el jugador ya es invencible, ignorar la colisión
         if (powerUpGenerator.IsPlayerInvincible())
         {
             return;
         }
 
+        if (other.CompareTag("PowerUp"))
+        {
+            Debug.Log("PowerUp recogido");
+            Destroy(other.gameObject); // Elimina el PowerUp de la escena
+            StartCoroutine(powerUpGenerator.ActivateInvincibility()); // Activa la invencibilidad y el escudo desde PowerUpGenerator
+        }
+
+        // Colisión con el Obstacle
         if (other.CompareTag("Obstacle"))
         {
             gameOver = true;
@@ -131,7 +141,7 @@ public class Player : MonoBehaviour
             int coinsCollected = coinCounter.coinCount;
 
             resultText.text = "you traveled: " + Mathf.Floor(distanceTravelled).ToString() + " meters\n" +
-                              "you picked up: " + coinCounter.coinCount + " coins";
+                            "you picked up: " + coinCounter.coinCount + " coins";
 
             recordManager.SaveHighScore(distanceTravelled, coinsCollected);
 
@@ -139,6 +149,7 @@ public class Player : MonoBehaviour
             StartCoroutine(FreezeGameAfterDelay(3f));
         }
     }
+    
 
     IEnumerator FreezeGameAfterDelay(float delay)
     {

@@ -8,6 +8,8 @@ TagManager:
   - Coins
   - Floor
   - PrevFloor
+  - PowerUp
+  - Shield
   layers:
   - Default
   - TransparentFX

@@ -1298,10 +1298,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1000475163}
-  powerUpPrefab: {fileID: 7057307971659490537, guid: a9f3c67309bdc2c4abad28382e07cd5e, type: 3}
+  powerUpPrefab: {fileID: 1975417237341344818, guid: 1d732368484cbe746aa8651591375a7f, type: 3}
   shieldPrefab: {fileID: 7057307971659490537, guid: a9f3c67309bdc2c4abad28382e07cd5e, type: 3}
-  minTimeBetweenPowerUps: 20
-  maxTimeBetweenPowerUps: 30
+  minTimeBetweenPowerUps: 1
+  maxTimeBetweenPowerUps: 3
   powerUpDuration: 10
   powerUpSpawnDistanceX: 40
   minYPosition: 2
@@ -3160,7 +3160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1000475163}
-  laserPrefab: {fileID: 4514137104156040186, guid: ea7cbb3186e82374c8ba3f5b6abda2f2, type: 3}
+  laserPrefab: {fileID: 3020821811555920200, guid: ea7cbb3186e82374c8ba3f5b6abda2f2, type: 3}
   lineCoinsPrefab: {fileID: 5833394981235891150, guid: d6c8bda3a2eb45748be6ab2490278523, type: 3}
   stairsCoinsPrefab: {fileID: 1876878439061445048, guid: 50dde4423a6215a4da446efc3d8111f0, type: 3}
   minYPosition: 2
@@ -3722,14 +3722,6 @@ PrefabInstance:
       propertyPath: resultText
       value: 
       objectReference: {fileID: 1014796139}
-    - target: {fileID: 5713842557864914275, guid: 750215621f5aa0b46ba70c45bd0ca920, type: 3}
-      propertyPath: jetpackSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 63d1ce6b9d7e68b488ea2a2f540b1f8f, type: 3}
-    - target: {fileID: 5713842557864914275, guid: 750215621f5aa0b46ba70c45bd0ca920, type: 3}
-      propertyPath: runningSteps
-      value: 
-      objectReference: {fileID: 8300000, guid: 5693a843799e0914199b3a4c5930d27c, type: 3}
     - target: {fileID: 5713842557864914275, guid: 750215621f5aa0b46ba70c45bd0ca920, type: 3}
       propertyPath: highScoreText
       value: 

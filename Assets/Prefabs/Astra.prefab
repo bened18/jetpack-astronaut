@@ -7255,9 +7255,10 @@ MonoBehaviour:
   distanceCounter: {fileID: 0}
   recordManager: {fileID: 5653549385217482610}
   powerUpGenerator: {fileID: 0}
-  invincibleColor: {r: 0, g: 1, b: 0, a: 1}
   audioSource: {fileID: 4075851368855375997}
   deathScream: {fileID: 8300000, guid: 8536a7f45a2e89841bcc7d3cd0386bfa, type: 3}
+  runningSteps: {fileID: 8300000, guid: 5693a843799e0914199b3a4c5930d27c, type: 3}
+  jetpackSound: {fileID: 8300000, guid: 63d1ce6b9d7e68b488ea2a2f540b1f8f, type: 3}
   jetpackParticles: {fileID: 4773151573133447271}
 --- !u!114 &1314832802346549768
 MonoBehaviour:
