@@ -21,7 +21,8 @@ public class Player : MonoBehaviour
     public AudioClip deathScream;
     public AudioClip runningSteps;
     public AudioClip jetpackSound;
-    public ParticleSystem jetpackParticles;
+    public GameObject jetpackFirePrefab; // Prefab del fuego del jetpack
+    private GameObject activeJetpackFire; // Instancia del fuego activo
     private Animator animator;
     
     private AudioSource stepsAudioSource;
@@ -33,7 +34,6 @@ public class Player : MonoBehaviour
         playAgainButton.SetActive(false);
         resultText.gameObject.SetActive(false);
         DisplayHighScore();
-        jetpackParticles.Stop();
 
         // Configurar un AudioSource separado para los pasos
         stepsAudioSource = gameObject.AddComponent<AudioSource>();
@@ -44,7 +44,7 @@ public class Player : MonoBehaviour
         // Configurar un AudioSource separado para el jetpack
         jetpackAudioSource = gameObject.AddComponent<AudioSource>();
         jetpackAudioSource.clip = jetpackSound;
-        jetpackAudioSource.loop = true; // Activar loop para que continúe mientras se mantiene el botón
+        jetpackAudioSource.loop = true;
     }
 
     private void FixedUpdate() {
@@ -52,9 +52,11 @@ public class Player : MonoBehaviour
         {
             rb.AddForce(new Vector3(0, 50, 0), ForceMode.Acceleration);
 
-            if (!jetpackParticles.isPlaying)
+            // Activar el fuego del jetpack si aún no está activo
+            if (activeJetpackFire == null)
             {
-                jetpackParticles.Play();
+                activeJetpackFire = Instantiate(jetpackFirePrefab, transform.position, Quaternion.identity);
+                activeJetpackFire.transform.SetParent(transform); // Hace que el fuego siga al jugador
             }
 
             // Reproducir el sonido del jetpack si no está sonando
@@ -71,10 +73,10 @@ public class Player : MonoBehaviour
         }
         else
         {
-            // Detener las partículas del jetpack si no se está presionando el clic
-            if (jetpackParticles.isPlaying)
+            // Detener el fuego del jetpack si el clic no está presionado
+            if (activeJetpackFire != null)
             {
-                jetpackParticles.Stop();
+                Destroy(activeJetpackFire);
             }
 
             // Detener el sonido del jetpack cuando se suelta el clic
@@ -111,7 +113,6 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         Debug.Log("Colisión detectada con: " + other.gameObject.name);
-        // Si el jugador ya es invencible, ignorar la colisión
         if (powerUpGenerator.IsPlayerInvincible())
         {
             return;
@@ -120,11 +121,10 @@ public class Player : MonoBehaviour
         if (other.CompareTag("PowerUp"))
         {
             Debug.Log("PowerUp recogido");
-            Destroy(other.gameObject); // Elimina el PowerUp de la escena
-            StartCoroutine(powerUpGenerator.ActivateInvincibility()); // Activa la invencibilidad y el escudo desde PowerUpGenerator
+            Destroy(other.gameObject);
+            StartCoroutine(powerUpGenerator.ActivateInvincibility());
         }
 
-        // Colisión con el Obstacle
         if (other.CompareTag("Obstacle"))
         {
             gameOver = true;
@@ -150,7 +150,6 @@ public class Player : MonoBehaviour
         }
     }
     
-
     IEnumerator FreezeGameAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
