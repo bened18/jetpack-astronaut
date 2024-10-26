@@ -1298,7 +1298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1000475163}
-  powerUpPrefab: {fileID: 1975417237341344818, guid: 1d732368484cbe746aa8651591375a7f, type: 3}
+  powerUpPrefab: {fileID: 1038554834478232602, guid: e2aa170509e9e0e4e8129fd8df0c9459, type: 3}
   shieldPrefab: {fileID: 7057307971659490537, guid: a9f3c67309bdc2c4abad28382e07cd5e, type: 3}
   minTimeBetweenPowerUps: 10
   maxTimeBetweenPowerUps: 30
@@ -2237,7 +2237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1000475163}
   meteoritePrefab: {fileID: 3750481868990700201, guid: 7e167ba2d29cd1b4cae3ddc6d986de70, type: 3}
-  alertPrefab: {fileID: 2804459046538152436, guid: 5df38af052cbf9b448bcd48a52a9b776, type: 3}
+  alertPrefab: {fileID: 2701376448721278279, guid: 4a05cb0a96b71cb4e9ed63cca5e2d948, type: 3}
   meteoriteSpeed: 8
   timeBeforeLaunch: 3
   minYPosition: 2
