@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100116, guid: 9df7021e1cc3dda4181323979d90c1ea, type: 3}
       propertyPath: m_Name
-      value: Aliens
+      value: Aliens 1
       objectReference: {fileID: 0}
     - target: {fileID: 100116, guid: 9df7021e1cc3dda4181323979d90c1ea, type: 3}
       propertyPath: m_TagString

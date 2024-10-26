@@ -1300,8 +1300,8 @@ MonoBehaviour:
   player: {fileID: 1000475163}
   powerUpPrefab: {fileID: 1975417237341344818, guid: 1d732368484cbe746aa8651591375a7f, type: 3}
   shieldPrefab: {fileID: 7057307971659490537, guid: a9f3c67309bdc2c4abad28382e07cd5e, type: 3}
-  minTimeBetweenPowerUps: 1
-  maxTimeBetweenPowerUps: 3
+  minTimeBetweenPowerUps: 10
+  maxTimeBetweenPowerUps: 30
   powerUpDuration: 10
   powerUpSpawnDistanceX: 40
   minYPosition: 2
